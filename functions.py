@@ -24,3 +24,4 @@ def power(a, n):
         p = div(1,p) 
 
     return p
+    # to be implemented
