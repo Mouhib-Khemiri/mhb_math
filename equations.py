@@ -12,7 +12,7 @@ def resolveEqFirstDegree(equation):
     a = equation[0:posX]
     b = equation[posX+1:posEqual]
 
-    x = -int(b)/int(a)
+    return -int(b)/int(a)
 
 def getFormula(expression):
     """
@@ -41,12 +41,16 @@ def resolveEqSecondDegree(equation):
     """
     eq = equation.replace(" ","")
     posSquare = eq.find('²')
-    posX = eq.find('x')
+    
+    for i in range(0,len(eq)):
+        if eq[i] == 'x':
+            posx = i
+        
     posEqual = eq.find('=')
 
     a = int(eq[0:posSquare-1])
-    b = int(eq[posSquare+1:posX])
-    c = int(eq[posX+1:posEqual])
+    b = int(eq[posSquare+1:posx])
+    c = int(eq[posx+1:posEqual])
 
     solution = []
     delta = b** -4*a*c
@@ -58,4 +62,4 @@ def resolveEqSecondDegree(equation):
         x2=(-b-sqrt(delta))/2*a
         solution=[x1,x2]
 
-    return solution 
+    return solution
